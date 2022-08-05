@@ -6,13 +6,18 @@ import org.junit.jupiter.api.Test
 // Single Player
 // Love-15-30-40 [x]
 
-// Two players
+// Two players [x]
 // deuce
 // advantage
 // win
 
 class TennisGameTest {
     private val tennisGame = TennisGame()
+
+    @Test
+    internal fun `0 - 0`() {
+        assertThat(tennisGame.getScore()).isEqualTo("Love - Love")
+    }
 
     @Test
     internal fun `15 - 0`() {
@@ -39,11 +44,6 @@ class TennisGameTest {
     }
 
     @Test
-    internal fun `0 - 0`() {
-        assertThat(tennisGame.getScore()).isEqualTo("Love - Love")
-    }
-
-    @Test
     internal fun `0 - 15`() {
         tennisGame.playerBScores()
 
@@ -67,26 +67,4 @@ class TennisGameTest {
         assertThat(tennisGame.getScore()).isEqualTo("Love - 40")
     }
 
-    @Test
-    internal fun `40 - 15`() {
-        tennisGame.playerAScores()
-        tennisGame.playerAScores()
-        tennisGame.playerAScores()
-
-        tennisGame.playerBScores()
-
-        assertThat(tennisGame.getScore()).isEqualTo("40 - 15")
-    }
-
-    @Test
-    internal fun `40 - 30`() {
-        tennisGame.playerAScores()
-        tennisGame.playerAScores()
-        tennisGame.playerAScores()
-
-        tennisGame.playerBScores()
-        tennisGame.playerBScores()
-
-        assertThat(tennisGame.getScore()).isEqualTo("40 - 30")
-    }
 }
