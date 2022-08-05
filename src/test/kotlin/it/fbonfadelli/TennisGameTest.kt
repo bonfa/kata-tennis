@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test
 // Love-15-30-40 [x]
 
 // Two players [x]
-// deuce
+// deuce [x]
 // advantage
 // win
 
@@ -79,4 +79,56 @@ class TennisGameTest {
 
         assertThat(tennisGame.getScore()).isEqualTo("Deuce")
     }
+
+    @Test
+    internal fun `15 - 15`() {
+        tennisGame.playerAScores()
+        tennisGame.playerBScores()
+
+        assertThat(tennisGame.getScore()).isEqualTo("15 - 15")
+    }
+
+    @Test
+    internal fun `30 - 30`() {
+        tennisGame.playerAScores()
+        tennisGame.playerAScores()
+
+        tennisGame.playerBScores()
+        tennisGame.playerBScores()
+
+        assertThat(tennisGame.getScore()).isEqualTo("30 - 30")
+    }
+
+    @Test
+    internal fun `player A advantage`() {
+        tennisGame.playerAScores()
+        tennisGame.playerAScores()
+        tennisGame.playerAScores()
+
+        tennisGame.playerBScores()
+        tennisGame.playerBScores()
+        tennisGame.playerBScores()
+
+        tennisGame.playerAScores()
+
+        assertThat(tennisGame.getScore()).isEqualTo("Player A advantage")
+    }
+
+    @Test
+    internal fun `player A advantage - after deuce`() {
+        tennisGame.playerAScores()
+        tennisGame.playerAScores()
+        tennisGame.playerAScores()
+
+        tennisGame.playerBScores()
+        tennisGame.playerBScores()
+        tennisGame.playerBScores()
+
+        tennisGame.playerAScores()
+        tennisGame.playerBScores()
+        tennisGame.playerAScores()
+
+        assertThat(tennisGame.getScore()).isEqualTo("Player A advantage")
+    }
+
 }
