@@ -6,14 +6,6 @@ class TennisGame {
     private var playerBScore: Int = 0
     private var playerAScore: Int = 0
 
-    fun getPlayerAScore(): String {
-        return basicPoints[playerAScore]!!
-    }
-
-    fun getPlayerBScore(): String {
-        return basicPoints[playerBScore]!!
-    }
-
     fun playerAScores() {
         playerAScore++
     }
