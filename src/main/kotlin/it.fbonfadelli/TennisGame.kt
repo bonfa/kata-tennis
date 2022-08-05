@@ -1,42 +1,77 @@
 package it.fbonfadelli
 
 class TennisGame {
-    private var score = Score()
+    private var gameScore: GameScore = NormalScore()
 
     fun playerAScores() {
-        score = score.playerAScoresOnePoint()
+        gameScore = gameScore.playerAScores()
     }
 
     fun playerBScores() {
-        score = score.playerBScoresOnePoint()
+        gameScore = gameScore.playerBScores()
     }
 
-    fun getScore(): String {
-        return formatScore(score)
-    }
+    fun getScore(): String = formatScore(gameScore)
 
     companion object {
-        private fun formatScore(score: Score): String =
-            when {
-                score.playerBScore > 3 && score.playerBScore - score.playerAScore > 1 -> "Player B win"
-                score.playerAScore > 3 && score.playerAScore - score.playerBScore > 1 -> "Player A win"
-                score.playerAScore > 3 && score.playerAScore - 1 == score.playerBScore -> "Player A advantage"
-                score.playerBScore > 3 && score.playerBScore - 1 == score.playerAScore -> "Player B advantage"
-                score.playerAScore == score.playerBScore && score.playerAScore > 2 -> "Deuce"
-                else -> {
-                    val basicPoints = mapOf(0 to "Love", 1 to "15", 2 to "30", 3 to "40")
-                    basicPoints[score.playerAScore]!! + " - " + basicPoints[score.playerBScore]!!
-                }
-            }
+        private val basicPoints = mapOf(0 to "Love", 1 to "15", 2 to "30", 3 to "40")
+
+        private fun formatScore(score: GameScore): String = when (score) {
+            WinPlayerB -> "Player B win"
+            WinPlayerA -> "Player A win"
+            AdvantagePlayerA -> "Player A advantage"
+            AdvantagePlayerB -> "Player B advantage"
+            Deuce -> "Deuce"
+            is NormalScore -> basicPoints[score.playerAScore]!! + " - " + basicPoints[score.playerBScore]!!
+        }
     }
 }
 
-data class Score(val playerAScore: Int = 0, val playerBScore: Int = 0) {
-    fun playerAScoresOnePoint(): Score {
-        return Score(playerAScore + 1, playerBScore)
-    }
+sealed interface GameScore {
+    fun playerAScores(): GameScore
+    fun playerBScores(): GameScore
+}
 
-    fun playerBScoresOnePoint(): Score {
-        return Score(playerAScore, playerBScore + 1)
-    }
+object AdvantagePlayerA : GameScore {
+    override fun playerAScores(): GameScore = WinPlayerA
+    override fun playerBScores(): GameScore = Deuce
+}
+
+object AdvantagePlayerB : GameScore {
+    override fun playerAScores(): GameScore = Deuce
+    override fun playerBScores(): GameScore = WinPlayerB
+}
+
+object WinPlayerA : GameScore {
+    override fun playerAScores(): GameScore = throw UnsupportedOperationException()
+    override fun playerBScores(): GameScore = throw UnsupportedOperationException()
+}
+
+object WinPlayerB : GameScore {
+    override fun playerAScores(): GameScore = throw UnsupportedOperationException()
+    override fun playerBScores(): GameScore = throw UnsupportedOperationException()
+}
+
+object Deuce : GameScore {
+    override fun playerAScores(): GameScore = AdvantagePlayerA
+    override fun playerBScores(): GameScore = AdvantagePlayerB
+}
+
+class NormalScore(
+    val playerAScore: Int = 0,
+    val playerBScore: Int = 0
+) : GameScore {
+    override fun playerAScores(): GameScore =
+        when {
+            playerAScore == 2 && playerBScore == 3 -> Deuce
+            playerAScore == 3 -> WinPlayerA
+            else -> NormalScore(playerAScore + 1, playerBScore)
+        }
+
+    override fun playerBScores(): GameScore =
+        when {
+            playerAScore == 3 && playerBScore == 2 -> Deuce
+            playerBScore == 3 -> WinPlayerB
+            else -> NormalScore(playerAScore, playerBScore + 1)
+        }
 }
