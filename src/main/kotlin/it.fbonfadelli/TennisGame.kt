@@ -15,6 +15,8 @@ class TennisGame {
     }
 
     fun getScore(): String {
+        if (playerAScore == playerBScore && playerAScore > 0)
+            return "Deuce"
         return basicPoints[playerAScore]!! + " - " + basicPoints[playerBScore]!!
     }
 
