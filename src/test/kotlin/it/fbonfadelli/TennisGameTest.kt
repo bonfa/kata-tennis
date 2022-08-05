@@ -3,14 +3,6 @@ package it.fbonfadelli
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
-// Single Player
-// Love-15-30-40 [x]
-
-// Two players [x]
-// deuce [x]
-// advantage
-// win
-
 class TennisGameTest {
     private val tennisGame = TennisGame()
 
