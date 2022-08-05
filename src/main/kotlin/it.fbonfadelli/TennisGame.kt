@@ -1,20 +1,18 @@
 package it.fbonfadelli
 
 class TennisGame {
-
-    private var playerBScore: Int = 0
-    private var playerAScore: Int = 0
+    private var score = Score()
 
     fun playerAScores() {
-        playerAScore++
+        score = score.playerAScoresOnePoint()
     }
 
     fun playerBScores() {
-        playerBScore++
+        score = score.playerBScoresOnePoint()
     }
 
     fun getScore(): String {
-        return getScore2(Score(playerAScore, playerBScore))
+        return getScore2(score)
     }
 
     companion object {
