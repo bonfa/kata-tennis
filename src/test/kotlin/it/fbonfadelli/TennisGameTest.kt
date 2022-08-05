@@ -172,4 +172,21 @@ class TennisGameTest {
 
         assertThat(tennisGame.getScore()).isEqualTo("Player A win")
     }
+
+    @Test
+    internal fun `player A win - after advantage`() {
+        tennisGame.playerAScores()
+        tennisGame.playerAScores()
+        tennisGame.playerAScores()
+
+        tennisGame.playerBScores()
+        tennisGame.playerBScores()
+        tennisGame.playerBScores()
+
+        tennisGame.playerAScores()
+        tennisGame.playerAScores()
+
+        assertThat(tennisGame.getScore()).isEqualTo("Player A win")
+    }
+
 }
