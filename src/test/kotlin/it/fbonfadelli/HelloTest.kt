@@ -17,4 +17,10 @@ class HelloTest {
     internal fun test() {
         assertThat(true).isTrue
     }
+
+    @Test
+    internal fun `start of the game`() {
+        val tennisGame = TennisGame()
+        assertThat(tennisGame.getPlayerAScore()).isEqualTo("Love")
+    }
 }
