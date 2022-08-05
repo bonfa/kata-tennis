@@ -16,7 +16,6 @@ class TennisGame {
     }
 
     companion object {
-        private val basicPoints = mapOf(0 to "Love", 1 to "15", 2 to "30", 3 to "40")
         private fun getScore2(score: Score): String {
             return if (score.playerBScore > 3 && score.playerBScore - score.playerAScore > 1)
                 "Player B win"
@@ -28,8 +27,10 @@ class TennisGame {
                 "Player B advantage"
             else if (score.playerAScore == score.playerBScore && score.playerAScore > 2)
                 "Deuce"
-            else
+            else {
+                val basicPoints = mapOf(0 to "Love", 1 to "15", 2 to "30", 3 to "40")
                 basicPoints[score.playerAScore]!! + " - " + basicPoints[score.playerBScore]!!
+            }
         }
     }
 }
