@@ -6,11 +6,13 @@ class TennisGame {
     fun getPlayerAScore(): String {
         if (playerAScore == 0)
             return "Love"
-        return "15"
+        if (playerAScore == 1)
+            return "15"
+        return "30"
     }
 
     fun playerAScores() {
-        playerAScore = 1;
+        playerAScore++;
     }
 
 }

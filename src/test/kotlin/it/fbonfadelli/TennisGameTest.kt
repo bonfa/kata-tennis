@@ -27,4 +27,14 @@ class TennisGameTest {
 
         assertThat(tennisGame.getPlayerAScore()).isEqualTo("15")
     }
+
+    @Test
+    internal fun `playerA scores another point`() {
+        val tennisGame = TennisGame()
+
+        tennisGame.playerAScores()
+        tennisGame.playerAScores()
+
+        assertThat(tennisGame.getPlayerAScore()).isEqualTo("30")
+    }
 }
