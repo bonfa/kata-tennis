@@ -12,17 +12,15 @@ import org.junit.jupiter.api.Test
 // win
 
 class TennisGameTest {
+    private val tennisGame = TennisGame()
 
     @Test
     internal fun `start of the game`() {
-        val tennisGame = TennisGame()
         assertThat(tennisGame.getPlayerAScore()).isEqualTo("Love")
     }
 
     @Test
     internal fun `playerA - 15`() {
-        val tennisGame = TennisGame()
-
         tennisGame.playerAScores()
 
         assertThat(tennisGame.getPlayerAScore()).isEqualTo("15")
@@ -30,8 +28,6 @@ class TennisGameTest {
 
     @Test
     internal fun `playerA - 30`() {
-        val tennisGame = TennisGame()
-
         tennisGame.playerAScores()
         tennisGame.playerAScores()
 
@@ -40,8 +36,6 @@ class TennisGameTest {
 
     @Test
     internal fun `playerA - 40`() {
-        val tennisGame = TennisGame()
-
         tennisGame.playerAScores()
         tennisGame.playerAScores()
         tennisGame.playerAScores()
