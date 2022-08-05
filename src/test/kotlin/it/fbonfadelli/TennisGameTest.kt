@@ -20,7 +20,7 @@ class TennisGameTest {
     }
 
     @Test
-    internal fun `playerA scores a point`() {
+    internal fun `playerA - 15`() {
         val tennisGame = TennisGame()
 
         tennisGame.playerAScores()
@@ -29,12 +29,23 @@ class TennisGameTest {
     }
 
     @Test
-    internal fun `playerA scores another point`() {
+    internal fun `playerA - 30`() {
         val tennisGame = TennisGame()
 
         tennisGame.playerAScores()
         tennisGame.playerAScores()
 
         assertThat(tennisGame.getPlayerAScore()).isEqualTo("30")
+    }
+
+    @Test
+    internal fun `playerA - 40`() {
+        val tennisGame = TennisGame()
+
+        tennisGame.playerAScores()
+        tennisGame.playerAScores()
+        tennisGame.playerAScores()
+
+        assertThat(tennisGame.getPlayerAScore()).isEqualTo("40")
     }
 }
