@@ -22,5 +22,9 @@ class TennisGame {
         playerBScore++
     }
 
+    fun getScore(): String {
+        return "15 - 0"
+    }
+
 
 }
