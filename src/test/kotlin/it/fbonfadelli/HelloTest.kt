@@ -7,6 +7,6 @@ class HelloTest {
 
     @Test
     internal fun test() {
-        assertThat(true).isFalse
+        assertThat(true).isTrue
     }
 }
