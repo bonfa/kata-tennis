@@ -3,8 +3,8 @@ package it.fbonfadelli
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
-class TennisGameTest {
-    private val tennisGame = TennisGame()
+class TennisGameAcceptanceTest {
+    private val tennisGame = TennisGame(ScoreFormatter())
 
     @Test
     internal fun `0 - 0`() {

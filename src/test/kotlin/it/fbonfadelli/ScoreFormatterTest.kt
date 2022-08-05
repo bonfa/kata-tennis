@@ -1,116 +1,39 @@
 package it.fbonfadelli
 
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Test
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.Arguments
+import org.junit.jupiter.params.provider.MethodSource
+
 
 class ScoreFormatterTest {
     private val scoreFormatter = ScoreFormatter()
 
-    @Test
-    fun advantagePlayerA() {
-        val score = AdvantagePlayerA
-
+    @ParameterizedTest
+    @MethodSource("arguments")
+    fun simpleScores(score: GameScore, expected: String) {
         val result = scoreFormatter.formatScore(score)
 
-        assertThat(result).isEqualTo("Player A advantage")
+        assertThat(result).isEqualTo(expected)
     }
 
-    @Test
-    fun advantagePlayerB() {
-        val score = AdvantagePlayerB
-
-        val result = scoreFormatter.formatScore(score)
-
-        assertThat(result).isEqualTo("Player B advantage")
-    }
-
-    @Test
-    fun winPlayerA() {
-        val score = WinPlayerA
-
-        val result = scoreFormatter.formatScore(score)
-
-        assertThat(result).isEqualTo("Player A win")
-    }
-
-    @Test
-    fun winPlayerB() {
-        val score = WinPlayerB
-
-        val result = scoreFormatter.formatScore(score)
-
-        assertThat(result).isEqualTo("Player B win")
-    }
-
-    @Test
-    fun deuce() {
-        val score = Deuce
-
-        val result = scoreFormatter.formatScore(score)
-
-        assertThat(result).isEqualTo("Deuce")
-    }
-
-    @Test
-    fun normal_0_0() {
-        val score = NormalScore()
-
-        val result = scoreFormatter.formatScore(score)
-
-        assertThat(result).isEqualTo("Love - Love")
-    }
-
-    @Test
-    fun normal_15_0() {
-        val score = NormalScore(1, 0)
-
-        val result = scoreFormatter.formatScore(score)
-
-        assertThat(result).isEqualTo("15 - Love")
-    }
-
-    @Test
-    fun normal_30_0() {
-        val score = NormalScore(2, 0)
-
-        val result = scoreFormatter.formatScore(score)
-
-        assertThat(result).isEqualTo("30 - Love")
-    }
-
-    @Test
-    fun normal_40_0() {
-        val score = NormalScore(3, 0)
-
-        val result = scoreFormatter.formatScore(score)
-
-        assertThat(result).isEqualTo("40 - Love")
-    }
-
-    @Test
-    fun normal_0_15() {
-        val score = NormalScore(0, 1)
-
-        val result = scoreFormatter.formatScore(score)
-
-        assertThat(result).isEqualTo("Love - 15")
-    }
-
-    @Test
-    fun normal_0_30() {
-        val score = NormalScore(0, 2)
-
-        val result = scoreFormatter.formatScore(score)
-
-        assertThat(result).isEqualTo("Love - 30")
-    }
-
-    @Test
-    fun normal_0_40() {
-        val score = NormalScore(0, 3)
-
-        val result = scoreFormatter.formatScore(score)
-
-        assertThat(result).isEqualTo("Love - 40")
+    companion object {
+        @JvmStatic
+        fun arguments(): List<Arguments> {
+            return listOf(
+                Arguments.of(AdvantagePlayerA, "Player A advantage"),
+                Arguments.of(AdvantagePlayerB, "Player B advantage"),
+                Arguments.of(WinPlayerA, "Player A win"),
+                Arguments.of(WinPlayerB, "Player B win"),
+                Arguments.of(Deuce, "Deuce"),
+                Arguments.of(NormalScore(0, 0), "Love - Love"),
+                Arguments.of(NormalScore(1, 0), "15 - Love"),
+                Arguments.of(NormalScore(2, 0), "30 - Love"),
+                Arguments.of(NormalScore(3, 0), "40 - Love"),
+                Arguments.of(NormalScore(0, 1), "Love - 15"),
+                Arguments.of(NormalScore(0, 2), "Love - 30"),
+                Arguments.of(NormalScore(0, 3), "Love - 40"),
+            )
+        }
     }
 }

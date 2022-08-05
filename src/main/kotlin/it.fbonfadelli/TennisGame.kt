@@ -1,7 +1,7 @@
 package it.fbonfadelli
 
-class TennisGame {
-    private val scoreFormatter = ScoreFormatter()
+class TennisGame(private val scoreFormatter: ScoreFormatter) {
+
     private var gameScore: GameScore = NormalScore()
 
     fun playerAScores() {

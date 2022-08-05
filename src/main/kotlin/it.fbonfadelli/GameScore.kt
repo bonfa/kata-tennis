@@ -30,7 +30,7 @@ object Deuce : GameScore {
     override fun playerBScores(): GameScore = AdvantagePlayerB
 }
 
-class NormalScore(
+data class NormalScore(
     val playerAScore: Int = 0,
     val playerBScore: Int = 0
 ) : GameScore {
