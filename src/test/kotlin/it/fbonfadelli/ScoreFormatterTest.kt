@@ -26,13 +26,13 @@ class ScoreFormatterTest {
                 Arguments.of(WinPlayerA, "Player A win"),
                 Arguments.of(WinPlayerB, "Player B win"),
                 Arguments.of(Deuce, "Deuce"),
-                Arguments.of(NormalScore(0, 0), "Love - Love"),
-                Arguments.of(NormalScore(1, 0), "15 - Love"),
-                Arguments.of(NormalScore(2, 0), "30 - Love"),
-                Arguments.of(NormalScore(3, 0), "40 - Love"),
-                Arguments.of(NormalScore(0, 1), "Love - 15"),
-                Arguments.of(NormalScore(0, 2), "Love - 30"),
-                Arguments.of(NormalScore(0, 3), "Love - 40"),
+                Arguments.of(DefaultScore(0, 0), "Love - Love"),
+                Arguments.of(DefaultScore(1, 0), "15 - Love"),
+                Arguments.of(DefaultScore(2, 0), "30 - Love"),
+                Arguments.of(DefaultScore(3, 0), "40 - Love"),
+                Arguments.of(DefaultScore(0, 1), "Love - 15"),
+                Arguments.of(DefaultScore(0, 2), "Love - 30"),
+                Arguments.of(DefaultScore(0, 3), "Love - 40"),
             )
         }
     }

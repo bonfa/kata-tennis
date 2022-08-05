@@ -10,6 +10,6 @@ class ScoreFormatter {
             AdvantagePlayerA -> "Player A advantage"
             AdvantagePlayerB -> "Player B advantage"
             Deuce -> "Deuce"
-            is NormalScore -> "${basicPoints[score.playerAScore]!!} - ${basicPoints[score.playerBScore]!!}"
+            is DefaultScore -> "${basicPoints[score.playerAScore]!!} - ${basicPoints[score.playerBScore]!!}"
         }
 }

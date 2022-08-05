@@ -30,7 +30,7 @@ object Deuce : GameScore {
     override fun playerBScores(): GameScore = AdvantagePlayerB
 }
 
-data class NormalScore(
+data class DefaultScore(
     val playerAScore: Int = 0,
     val playerBScore: Int = 0
 ) : GameScore {
@@ -38,13 +38,13 @@ data class NormalScore(
         when {
             playerAScore == 2 && playerBScore == 3 -> Deuce
             playerAScore == 3 -> WinPlayerA
-            else -> NormalScore(playerAScore + 1, playerBScore)
+            else -> DefaultScore(playerAScore + 1, playerBScore)
         }
 
     override fun playerBScores(): GameScore =
         when {
             playerAScore == 3 && playerBScore == 2 -> Deuce
             playerBScore == 3 -> WinPlayerB
-            else -> NormalScore(playerAScore, playerBScore + 1)
+            else -> DefaultScore(playerAScore, playerBScore + 1)
         }
 }
