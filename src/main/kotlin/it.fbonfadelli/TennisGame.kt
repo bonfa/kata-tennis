@@ -12,11 +12,11 @@ class TennisGame {
     }
 
     fun getScore(): String {
-        return getScore2(score)
+        return formatScore(score)
     }
 
     companion object {
-        private fun getScore2(score: Score): String =
+        private fun formatScore(score: Score): String =
             when {
                 score.playerBScore > 3 && score.playerBScore - score.playerAScore > 1 -> "Player B win"
                 score.playerAScore > 3 && score.playerAScore - score.playerBScore > 1 -> "Player A win"
