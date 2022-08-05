@@ -15,64 +15,6 @@ class TennisGameTest {
     private val tennisGame = TennisGame()
 
     @Test
-    internal fun `playerA - zero`() {
-        assertThat(tennisGame.getPlayerAScore()).isEqualTo("Love")
-    }
-
-    @Test
-    internal fun `playerA - 15`() {
-        tennisGame.playerAScores()
-
-        assertThat(tennisGame.getPlayerAScore()).isEqualTo("15")
-    }
-
-    @Test
-    internal fun `playerA - 30`() {
-        tennisGame.playerAScores()
-        tennisGame.playerAScores()
-
-        assertThat(tennisGame.getPlayerAScore()).isEqualTo("30")
-    }
-
-    @Test
-    internal fun `playerA - 40`() {
-        tennisGame.playerAScores()
-        tennisGame.playerAScores()
-        tennisGame.playerAScores()
-
-        assertThat(tennisGame.getPlayerAScore()).isEqualTo("40")
-    }
-
-    @Test
-    internal fun `playerB - zero`() {
-        assertThat(tennisGame.getPlayerBScore()).isEqualTo("Love")
-    }
-
-    @Test
-    internal fun `playerB - 15`() {
-        tennisGame.playerBScores()
-
-        assertThat(tennisGame.getPlayerBScore()).isEqualTo("15")
-    }
-
-    @Test
-    internal fun `playerB - 30`() {
-        tennisGame.playerBScores()
-        tennisGame.playerBScores()
-
-        assertThat(tennisGame.getPlayerBScore()).isEqualTo("30")
-    }
-
-    @Test
-    internal fun `playerB - 40`() {
-        tennisGame.playerBScores()
-        tennisGame.playerBScores()
-        tennisGame.playerBScores()
-
-        assertThat(tennisGame.getPlayerBScore()).isEqualTo("40")
-    }
-
-    @Test
     internal fun `15 - 0`() {
         tennisGame.playerAScores()
 
@@ -85,5 +27,66 @@ class TennisGameTest {
         tennisGame.playerAScores()
 
         assertThat(tennisGame.getScore()).isEqualTo("30 - Love")
+    }
+
+    @Test
+    internal fun `40 - 0`() {
+        tennisGame.playerAScores()
+        tennisGame.playerAScores()
+        tennisGame.playerAScores()
+
+        assertThat(tennisGame.getScore()).isEqualTo("40 - Love")
+    }
+
+    @Test
+    internal fun `0 - 0`() {
+        assertThat(tennisGame.getScore()).isEqualTo("Love - Love")
+    }
+
+    @Test
+    internal fun `0 - 15`() {
+        tennisGame.playerBScores()
+
+        assertThat(tennisGame.getScore()).isEqualTo("Love - 15")
+    }
+
+    @Test
+    internal fun `0 - 30`() {
+        tennisGame.playerBScores()
+        tennisGame.playerBScores()
+
+        assertThat(tennisGame.getScore()).isEqualTo("Love - 30")
+    }
+
+    @Test
+    internal fun `0 - 40`() {
+        tennisGame.playerBScores()
+        tennisGame.playerBScores()
+        tennisGame.playerBScores()
+
+        assertThat(tennisGame.getScore()).isEqualTo("Love - 40")
+    }
+
+    @Test
+    internal fun `40 - 15`() {
+        tennisGame.playerAScores()
+        tennisGame.playerAScores()
+        tennisGame.playerAScores()
+
+        tennisGame.playerBScores()
+
+        assertThat(tennisGame.getScore()).isEqualTo("40 - 15")
+    }
+
+    @Test
+    internal fun `40 - 30`() {
+        tennisGame.playerAScores()
+        tennisGame.playerAScores()
+        tennisGame.playerAScores()
+
+        tennisGame.playerBScores()
+        tennisGame.playerBScores()
+
+        assertThat(tennisGame.getScore()).isEqualTo("40 - 30")
     }
 }
