@@ -4,7 +4,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 // Single Player
-// Love-15-30-40
+// Love-15-30-40 [x]
 
 // Two players
 // deuce
@@ -15,7 +15,7 @@ class TennisGameTest {
     private val tennisGame = TennisGame()
 
     @Test
-    internal fun `start of the game`() {
+    internal fun `playerA - zero`() {
         assertThat(tennisGame.getPlayerAScore()).isEqualTo("Love")
     }
 
