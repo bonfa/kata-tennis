@@ -11,12 +11,7 @@ import org.junit.jupiter.api.Test
 // advantage
 // win
 
-class HelloTest {
-
-    @Test
-    internal fun test() {
-        assertThat(true).isTrue
-    }
+class TennisGameTest {
 
     @Test
     internal fun `start of the game`() {
