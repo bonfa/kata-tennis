@@ -42,4 +42,16 @@ class TennisGameTest {
 
         assertThat(tennisGame.getPlayerAScore()).isEqualTo("40")
     }
+
+    @Test
+    internal fun `playerB - zero`() {
+        assertThat(tennisGame.getPlayerBScore()).isEqualTo("Love")
+    }
+
+    @Test
+    internal fun `playerB - 15`() {
+        tennisGame.playerBScores()
+
+        assertThat(tennisGame.getPlayerBScore()).isEqualTo("15")
+    }
 }
