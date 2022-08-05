@@ -115,7 +115,7 @@ class TennisGameTest {
     }
 
     @Test
-    internal fun `player A advantage - after deuce`() {
+    internal fun `player A advantage - for the second time`() {
         tennisGame.playerAScores()
         tennisGame.playerAScores()
         tennisGame.playerAScores()
@@ -129,6 +129,38 @@ class TennisGameTest {
         tennisGame.playerAScores()
 
         assertThat(tennisGame.getScore()).isEqualTo("Player A advantage")
+    }
+
+    @Test
+    internal fun `player B advantage`() {
+        tennisGame.playerAScores()
+        tennisGame.playerAScores()
+        tennisGame.playerAScores()
+
+        tennisGame.playerBScores()
+        tennisGame.playerBScores()
+        tennisGame.playerBScores()
+
+        tennisGame.playerBScores()
+
+        assertThat(tennisGame.getScore()).isEqualTo("Player B advantage")
+    }
+
+    @Test
+    internal fun `player B advantage - second time`() {
+        tennisGame.playerAScores()
+        tennisGame.playerAScores()
+        tennisGame.playerAScores()
+
+        tennisGame.playerBScores()
+        tennisGame.playerBScores()
+        tennisGame.playerBScores()
+
+        tennisGame.playerBScores()
+        tennisGame.playerAScores()
+        tennisGame.playerBScores()
+
+        assertThat(tennisGame.getScore()).isEqualTo("Player B advantage")
     }
 
 }
