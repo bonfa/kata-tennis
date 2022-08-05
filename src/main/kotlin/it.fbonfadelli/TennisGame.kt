@@ -14,23 +14,34 @@ class TennisGame {
     }
 
     fun getScore(): String {
-        return getScore2(playerAScore, playerBScore)
+        return getScore2(Score(playerAScore, playerBScore))
     }
 
     companion object {
         private val basicPoints = mapOf(0 to "Love", 1 to "15", 2 to "30", 3 to "40")
-        private fun getScore2(playerAScore: Int, playerBScore: Int): String {
-            if (playerBScore > 3 && playerBScore - playerAScore > 1)
-                return "Player B win"
-            if (playerAScore > 3 && playerAScore - playerBScore > 1)
-                return "Player A win"
-            if (playerAScore > 3 && playerAScore - 1 == playerBScore)
-                return "Player A advantage"
-            if (playerBScore > 3 && playerBScore - 1 == playerAScore)
-                return "Player B advantage"
-            if (playerAScore == playerBScore && playerAScore > 2)
-                return "Deuce"
-            return basicPoints[playerAScore]!! + " - " + basicPoints[playerBScore]!!
+        private fun getScore2(score: Score): String {
+            return if (score.playerBScore > 3 && score.playerBScore - score.playerAScore > 1)
+                "Player B win"
+            else if (score.playerAScore > 3 && score.playerAScore - score.playerBScore > 1)
+                "Player A win"
+            else if (score.playerAScore > 3 && score.playerAScore - 1 == score.playerBScore)
+                "Player A advantage"
+            else if (score.playerBScore > 3 && score.playerBScore - 1 == score.playerAScore)
+                "Player B advantage"
+            else if (score.playerAScore == score.playerBScore && score.playerAScore > 2)
+                "Deuce"
+            else
+                basicPoints[score.playerAScore]!! + " - " + basicPoints[score.playerBScore]!!
         }
+    }
+}
+
+data class Score(val playerAScore: Int = 0, val playerBScore: Int = 0) {
+    fun playerAScoresOnePoint(): Score {
+        return Score(playerAScore + 1, playerBScore)
+    }
+
+    fun playerBScoresOnePoint(): Score {
+        return Score(playerAScore, playerBScore + 1)
     }
 }
