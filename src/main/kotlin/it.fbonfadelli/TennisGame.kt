@@ -15,6 +15,8 @@ class TennisGame {
     }
 
     fun getScore(): String {
+        if (playerBScore > 3 && playerBScore - playerAScore > 1)
+            return "Player B win"
         if (playerAScore > 3 && playerAScore - playerBScore > 1)
             return "Player A win"
         if (playerAScore > 3 && playerAScore - 1 == playerBScore)
